@@ -1,3 +1,12 @@
+/**
+ * @version: 1.0
+ * @author: Aayush Prakash Budania <aayushbudania002@gmail.com>
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

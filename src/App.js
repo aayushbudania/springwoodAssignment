@@ -11,11 +11,15 @@
 
 import './App.css';
 import { Route, Routes } from "react-router-dom";
+import ReactGA from "react-ga";
 import Register from './pages/register';
 import Filter from './pages/filter';
 import Slider from './pages/slider';
 import Navbar from './components/navbar';
 import { useState } from 'react';
+
+const TRACKING_ID = "G-T9QKXWXW6G"; //// Tracking Id for logging events in google analytics. ////
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
 

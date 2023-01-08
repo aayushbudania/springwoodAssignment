@@ -8,7 +8,8 @@
 
 import { useRef } from "react";
 import { addDoc, collection, serverTimestamp } from "@firebase/firestore";
-import { firestore, analytics } from "../firebase"; ////👈️ imports the firestore and analytics objects from the firebase module. ////
+import { firestore } from "../firebase";
+import ReactGA from "react-ga";
 
 export default function Register() {
     const nameInputRef = useRef();
@@ -25,7 +26,7 @@ export default function Register() {
      */
   const handleRegister = async (e) => {
     e.preventDefault();
-    
+
     const userDetails = {
         name: nameInputRef.current.value,
         email: emailInputRef.current.value,
@@ -35,8 +36,16 @@ export default function Register() {
         timestamp: serverTimestamp() ////👈️ Time of creation. ////
     }
 
+    /* Interaction Event Logged when user registers on the system. */
+    ReactGA.event({
+        category: "FORM_SUBMITTED",
+        action: "test action",
+        label: "test label",
+        value: userDetails
+    });
+
     try {
-        addDoc(ref, userDetails);
+        await addDoc(ref, userDetails);
         e.target.reset(); ////👈️ Clears all input values in the form. ////
     } catch(err) {
         console.log(err);

@@ -9,6 +9,7 @@
 import { useState, useRef, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { firestore } from "../firebase";
+import ReactGA from "react-ga";
 
 export default function Filter() {
 
@@ -27,11 +28,19 @@ export default function Filter() {
    */
   const filterUsers = async (e) => {
     e.preventDefault();
-    
+
     let list = [];
     let q = "";
     const year = yearInputRef.current.value;
     const branch = branchInputRef.current.value.toUpperCase();
+
+    /* Interaction Event Logged when user clicks the search button. */
+    ReactGA.event({
+        category: "SEARCH_BUTTON_CLICKED",
+        action: "test action",
+        label: "test label",
+        value: {"year": year, "branch": branch}
+    });
 
     if(year && branch) {
         q = query(ref, where("year", "==", year), where("branch", "==", branch));
@@ -60,7 +69,10 @@ export default function Filter() {
    * Fetches Registered users from firestore and stores them using setUser hook.
    */
   useEffect(() => {
-    
+
+    /* Non Interaction Event. */
+    ReactGA.pageview(window.location.pathname); ////👈️ Helps in tracking number of time this page is visited. ////
+
     const fetchUsers = async () => {
         let list = [];
 

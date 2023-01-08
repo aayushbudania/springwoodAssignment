@@ -21,6 +21,13 @@
 //           4) Counter: initiates with zero on load and increases by one representing the number of       //
 //                       clicks by the user on the app screens in a single session                         //
 //                                                                                                         //
+//  # Integrated Firebase Analytics in the project to log events.                                          //
+//  # Hosted the website on firebase(url): https://springwoodassignment.web.app/                           //
+//                                                                                                         //
+//  Tech Stack:- React.js for frontend framework                                                           //
+//               Tailwind CSS layout design                                                                //
+//               Firebase and Firestore for storage                                                        //
+//                                                                                                         //
 //                                                                                                         //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
